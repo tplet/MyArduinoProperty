@@ -9,7 +9,7 @@
 #include <MySensors.h>
 
 template<typename T>
-class MySensorProperty : public Property<T> {
+class MySensorsProperty : public Property<T> {
 protected:
     /**
      * MyMessage object to send or receive data to or from gateway
@@ -28,7 +28,7 @@ public:
      * @param byte childId Sensor id
      * @param mysensors_data_t dataType Date type
      */
-    MySensorProperty(byte childId, const mysensors_data_t dataType) : Property<T>()
+    MySensorsProperty(byte childId, const mysensors_data_t dataType) : Property<T>()
     {
         this->construct(childId, dataType);
     }
@@ -40,7 +40,7 @@ public:
      * @param mysensors_data_t dataType Date type
      * @param T initValue Init value to affect on init
      */
-    MySensorProperty(byte childId, const mysensors_data_t dataType, T initValue) : Property<T>(initValue)
+    MySensorsProperty(byte childId, const mysensors_data_t dataType, T initValue) : Property<T>(initValue)
     {
         this->construct(childId, dataType);
     }
