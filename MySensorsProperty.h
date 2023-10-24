@@ -55,7 +55,7 @@ public:
     void construct(byte childId, const mysensors_data_t dataType)
     {
         this->childId = childId;
-        this->message = new MyMessage(childId)        
+        this->message = new MyMessage(childId, dataType);        
     }
 
     /**
