@@ -46,6 +46,14 @@ public:
     }
 
     /**
+     * Destructor
+     */
+    virtual ~MySensorsProperty()
+    {
+        delete this->message;
+    }
+
+    /**
      * Common method for constructor
      * 
      * @param byte childId Sensor id
@@ -77,24 +85,24 @@ public:
     /**
      * Set value
      */
-    T set(T value)
+    virtual T set(T value)
     {  
-        this->set(value, true);
+        return this->set(value, true);
     }
     
     /**
      * Set value
      */
-    T set(T value, bool sendToGateway) {
+    virtual T set(T value, bool sendToGateway) {
         // Parent
-        Property<T>::set(value);
+        T v = Property<T>::set(value);
 
         // Send to gateway
         if (sendToGateway) {
-            send(this->message->set(this->get()));
+            send(this->message->set(v));
         }
 
-        return this->value;
+        return v;
     }
 };
 
